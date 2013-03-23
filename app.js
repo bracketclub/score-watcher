@@ -4,7 +4,7 @@
 
 var express = require('express'),
     http = require('http'),
-    log = require('./lib/log'),
+    log = require('simplest-log'),
     app = express(),
     scores = require('./lib/scores');
 
