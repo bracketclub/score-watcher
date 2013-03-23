@@ -15,7 +15,6 @@
   "dependencies": {
     "async": "~0.2.6",
     "bracket-validator": "0.1.x",
-    "mongoose": "~3.6.0",
     "scores": "0.x.x",
     "express": "~3.1.0",
     "lodash": "~1.0.1",
