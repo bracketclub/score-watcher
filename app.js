@@ -6,7 +6,11 @@ var express = require('express'),
     http = require('http'),
     log = require('simplest-log'),
     app = express(),
-    scores = require('./lib/scores');
+    Scores = require('./lib/scores'),
+    scores = new Scores({
+      interval: 1000 * 60 * 5,
+      url: '{{date}}&confId=100'
+    });
 
 app.configure(function () {
   app.set('port', 8080);
@@ -17,5 +21,5 @@ app.configure(function () {
 
 http.createServer(app).listen(app.get('port'), function () {
   log.debug('Express server listening', app.get('port'), app.settings.env);
-  scores.watch();
+  scores.watchFinals();
 });
