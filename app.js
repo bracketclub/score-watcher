@@ -6,10 +6,11 @@ var express = require('express'),
     http = require('http'),
     log = require('simplest-log'),
     app = express(),
+    m = require('moment'),
     Scores = require('./lib/scores'),
     scores = new Scores({
       interval: 1000 * 60 * 5,
-      url: '{{date}}&confId=100'
+      url: 'date=' + m(m.utc().format().split('+')[0] + '-07:00').format('YYYYMMDD') + '&confId=100'
     });
 
 app.configure(function () {
