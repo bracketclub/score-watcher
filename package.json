@@ -1,6 +1,5 @@
 {
   "name": "score-watcher",
-  "private": true,
   "description": "Score watcher for tweetyourbracket.com",
   "version": "0.0.8",
   "author": {
@@ -19,6 +18,7 @@
   ],
   "license": "MIT",
   "main": "app.js",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "http://github.com/tweetyourbracket/score-watcher.git"
