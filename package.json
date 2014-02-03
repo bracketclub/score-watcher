@@ -1,24 +1,26 @@
 {
-  "name": "tweetyourbracket-scores",
-  "subdomain": "tweetyourbracket-scores",
+  "name": "score-watcher",
+  "private": true,
+  "description": "Score watcher for tweetyourbracket.com",
+  "version": "0.0.8",
   "author": {
     "name": "Luke Karrys",
-    "email": "luke@lukekarrys.com"
+    "email": "luke@lukekarrys.com",
+    "url": "http://lukekarrys.com"
   },
-  "scripts": {
-    "start": "node app.js"
+  "bugs": {
+    "url": "https://github.com/tweetyourbracket/score-watcher/issues"
   },
-  "version": "0.0.0-8",
-  "engines": {
-    "node": "0.8.x"
-  },
-  "dependencies": {
-    "async": "~0.2.6",
-    "bracket-validator": "0.1.x",
-    "scores": "0.x.x",
-    "express": "~3.1.0",
-    "lodash": "~1.0.1",
-    "tweetyourbracket-db": "0.x.x",
-    "simplest-log": "0.x.x"
+  "homepage": "http://github.com/tweetyourbracket/score-watcher",
+  "keywords": [
+    "ncaa",
+    "bracket",
+    "tweetyourbracket"
+  ],
+  "license": "MIT",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/tweetyourbracket/score-watcher.git"
   }
 }

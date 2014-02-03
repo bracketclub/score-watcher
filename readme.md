@@ -1,1 +1,4 @@
-# tweetyourbracket-scores
+score-watcher
+==============
+
+Score watcher for tweetyourbracket.com
