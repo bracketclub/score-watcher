@@ -90,7 +90,7 @@ describe('Score watcher', function () {
                         isWinner: false
                     }
                 });
-            }.bind(this));
+            }.bind(this), 500);
         });
     });
 });
