@@ -11,10 +11,16 @@
     "url": "https://github.com/tweetyourbracket/score-watcher/issues"
   },
   "dependencies": {
-    "bracket-updater": "~1.0.3",
+    "async": "~0.2.10",
+    "bracket-data": "~2.0.3",
+    "bracket-updater": "~2.0.0",
     "bucker": "~1.0.5",
     "db-schema": "git+https://github.com/tweetyourbracket/db-schema.git",
-    "scores": "~0.1.3"
+    "scores": "~1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "precommit-hook": "~0.3.10"
   },
   "homepage": "http://github.com/tweetyourbracket/score-watcher",
   "keywords": [
@@ -30,6 +36,7 @@
     "url": "http://github.com/tweetyourbracket/score-watcher.git"
   },
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "test": "./node_modules/.bin/mocha -c -u bdd -R spec --timeout 2000 test/test.js"
   }
 }
