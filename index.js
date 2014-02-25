@@ -33,7 +33,7 @@ new Watcher({
             if (err) {
                 this.logger.error('[UPDATE MASTER]', err);
             } else {
-                this.logger.error('[UPDATE MASTER]', entry);
+                this.logger.info('[UPDATE MASTER]', entry);
             }
             cb();
         }.bind(this));
