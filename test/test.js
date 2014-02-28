@@ -93,4 +93,34 @@ describe('Score watcher', function () {
             }.bind(this), 500);
         });
     });
+
+    it('It should only update once if the same game is added to the queue multiple times', function (done) {
+        var watcher = new Watcher({
+            year: year,
+            sport: sport
+        });
+
+        watcher.drain(function (master, cb) {
+            assert.equal(master, constants.EMPTY.replace('MWX', 'MW1'));
+            cb();
+            done();
+        });
+
+        watcher.start(function () {
+            this.updater.currentMaster = this.emptyBracket;
+            for (var i = 0; i < 5; i++) {
+                this.scores.emit('game', {
+                    region: 'MW',
+                    home: {
+                        seed: 1,
+                        isWinner: true
+                    },
+                    visitor: {
+                        seed: 16,
+                        isWinner: false
+                    }
+                });
+            }
+        });
+    });
 });

@@ -5,8 +5,9 @@ var Database = require('db-schema');
 var db = new Database(config.db);
 
 new Watcher({
-    year: '2013',
-    sport: 'ncaa-mens-basketball',
+    year: config.year,
+    sport: config.sport,
+    scores: config.scores,
     logger: require('bucker').createLogger({
         console: {
             color: true
@@ -20,10 +21,15 @@ new Watcher({
     }),
     start: function () {
         db.findMaster(function (err, master) {
-            if (err || !master) master = this.emptyBracket;
+            var startMaster;
+            if (master && !err && process.argv.join(' ').indexOf('--reset') === -1) {
+                startMaster = master.bracket;
+            } else {
+                startMaster = this.emptyBracket;
+            }
 
-            this.logger.debug('[START MASTER]', master);
-            this.updater.currentMaster = master;
+            this.logger.debug('[START MASTER]', startMaster);
+            this.updater.currentMaster = startMaster;
 
             this.scores.start();
         }.bind(this));
@@ -33,7 +39,7 @@ new Watcher({
             if (err) {
                 this.logger.error('[UPDATE MASTER]', err);
             } else {
-                this.logger.info('[UPDATE MASTER]', entry);
+                this.logger.info('[UPDATE MASTER]', entry.bracket);
             }
             cb();
         }.bind(this));

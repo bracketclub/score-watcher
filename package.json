@@ -16,7 +16,8 @@
     "bracket-updater": "~2.0.0",
     "bucker": "~1.0.5",
     "db-schema": "git+https://github.com/tweetyourbracket/db-schema.git",
-    "scores": "~1.0.2"
+    "scores": "~1.0.2",
+    "lodash-node": "~2.4.1"
   },
   "devDependencies": {
     "mocha": "~1.17.1",
@@ -37,6 +38,7 @@
   },
   "scripts": {
     "start": "node index",
+    "reset": "node index --reset",
     "test": "./node_modules/.bin/mocha -c -u bdd -R spec --timeout 2000 test/test.js"
   }
 }
