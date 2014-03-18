@@ -3,6 +3,7 @@ var path = require('path');
 var config = require('./config');
 var Database = require('db-schema');
 var db = new Database(config.db);
+var jsonMaster = require('../bracket-data-live/lib/save').masterJSON;
 
 new Watcher({
     year: config.year,
@@ -42,6 +43,14 @@ new Watcher({
                 this.logger.info('[UPDATE MASTER]', entry.bracket);
             }
             cb();
+        }.bind(this));
+
+        jsonMaster({year: config.year, sport: config.sport}, currentMaster, function (err) {
+            if (err) {
+                this.logger.error('[JSON SAVE ERROR]', err);
+            } else {
+                this.logger.debug('[JSON SAVE SUCESS]', currentMaster);
+            }
         }.bind(this));
     }
 }).start();
