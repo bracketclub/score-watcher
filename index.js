@@ -1,9 +1,10 @@
 var Watcher = require('./lib/watcher');
 var path = require('path');
 var config = require('./config');
-var Database = require('db-schema');
-var db = new Database(config.db);
-var jsonMaster = require('../bracket-data-live/lib/save').masterJSON;
+var updateMaster = require('../bracket-data-live/lib/save').masterJSON;
+var getMaster = require('../bracket-data-live/index');
+var _ = require('lodash-node');
+
 
 new Watcher({
     year: config.year,
@@ -21,36 +22,22 @@ new Watcher({
         }
     }),
     start: function () {
-        db.findMaster(function (err, master) {
-            var startMaster;
-            if (master && !err && process.argv.join(' ').indexOf('--reset') === -1) {
-                startMaster = master.bracket;
-            } else {
-                startMaster = this.emptyBracket;
-            }
+        var masters = getMaster({year: config.year, sport: config.sport}).masters;
+        var startMaster = _.last(masters);
 
-            this.logger.debug('[START MASTER]', startMaster);
-            this.updater.currentMaster = startMaster;
+        this.logger.debug('[START MASTER]', startMaster);
+        this.updater.currentMaster = startMaster;
 
-            this.scores.start();
-        }.bind(this));
+        this.scores.start();
     },
     drain: function (currentMaster, cb) {
-        db.updateMaster(currentMaster, function (err, entry) {
-            if (err) {
-                this.logger.error('[UPDATE MASTER]', err);
-            } else {
-                this.logger.info('[UPDATE MASTER]', entry.bracket);
-            }
-            cb();
-        }.bind(this));
-
-        jsonMaster({year: config.year, sport: config.sport}, currentMaster, function (err) {
+        updateMaster({year: config.year, sport: config.sport}, currentMaster, function (err) {
             if (err) {
                 this.logger.error('[JSON SAVE ERROR]', err);
             } else {
                 this.logger.debug('[JSON SAVE SUCESS]', currentMaster);
             }
+            cb();
         }.bind(this));
     }
 }).start();

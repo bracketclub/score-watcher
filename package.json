@@ -15,7 +15,6 @@
     "bracket-data": "~2.0.3",
     "bracket-updater": "~2.0.0",
     "bucker": "~1.0.5",
-    "db-schema": "git+https://github.com/tweetyourbracket/db-schema.git",
     "scores": "~1.0.2",
     "lodash-node": "~2.4.1"
   },
