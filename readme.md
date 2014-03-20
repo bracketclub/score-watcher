@@ -7,13 +7,13 @@ Score watcher for tweetyourbracket.com.
 
 ## Usage
 
-1. Create `config.js` file in root with `db` connection string to a mongodb instance.
+1. Create `config.js` file in root with a `sport` and a `year`.
 2. `npm install`
 3. `npm start`
 
 ## What is it doing?
 
-It is setting up an async.queue and creating a watcher/emitter with [`scores`](http://github.com/tweetyourbracket/scores). Then every time the queue drains, it finds the current master bracket in the DB and updates it.
+It is setting up an async.queue and creating a watcher/emitter with [`scores`](http://github.com/tweetyourbracket/scores). Then every time the queue drains, it pushes the latest master to an array in the [`bracket-data-live`](http://github.com/tweetyourbracket/bracket-data-live) repo located as a sibling dir.
 
 ## Is it on npm?
 
