@@ -15,8 +15,9 @@
     "bracket-data": "~2.0.3",
     "bracket-updater": "~2.0.0",
     "bucker": "~1.0.5",
-    "scores": "~1.0.2",
-    "lodash-node": "~2.4.1"
+    "figs": "^0.1.4",
+    "lodash-node": "~2.4.1",
+    "scores": "~1.0.2"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

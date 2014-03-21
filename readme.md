@@ -7,7 +7,7 @@ Score watcher for tweetyourbracket.com.
 
 ## Usage
 
-1. Create `config.js` file in root with a `sport` and a `year`.
+1. Create `config.js` file in root with a `sport` and a `year` (or create the file anywhere that [`figs`](https://www.npmjs.org/package/figs) will support).
 2. `npm install`
 3. `npm start`
 
