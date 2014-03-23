@@ -6,6 +6,7 @@ var sport = 'ncaa-mens-basketball';
 var data = new BracketData({year: year, sport: sport, props: ['order', 'constants']});
 var order = data.order;
 var constants = data.constants;
+var _ = require('lodash-node');
 
 
 describe('Score watcher', function () {
@@ -39,6 +40,57 @@ describe('Score watcher', function () {
                     });
                 }
             }.bind(this));
+        });
+    });
+
+    it('It should update the first round separately if not queued and async', function (done) {
+        var watcher = new Watcher({
+            year: year,
+            sport: sport,
+            useCargo: true
+        });
+        var drainCount = 0;
+
+        var after = [
+            'MW1XXXXXXXXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW18XXXXXXXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW185XXXXXXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW1854XXXXXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW18546XXXXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW185463XXXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW1854637XXXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX',
+            'MW18546372XXXXXXXWXXXXXXXXXXXXXXXSXXXXXXXXXXXXXXXEXXXXXXXXXXXXXXXFFXXX'
+        ];
+        var masters = [];
+
+        watcher.drain(function (master, cb) {
+            masters.push(master);
+            assert.equal(master, after[drainCount]);
+            drainCount++;
+            if (drainCount === 8) {
+                assert.equal(masters.join(','), after.join(','));
+                done();
+            }
+            setTimeout(function () {
+                cb();
+            }, _.random(100, 150));
+        });
+
+        watcher.start(function () {
+            this.updater.currentMaster = this.emptyBracket;
+            for (var i = 0, m = order.length; i < m; i += 2) {
+                this.scores.emit('game', {
+                    region: 'MW',
+                    home: {
+                        seed: order[i],
+                        isWinner: true
+                    },
+                    visitor: {
+                        seed: order[i + 1],
+                        isWinner: false
+                    }
+                });
+            }
         });
     });
 

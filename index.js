@@ -21,6 +21,7 @@ new Watcher({
             accessFormat: ':time :level :method :status :url'
         }
     }),
+    useCargo: true,
     start: function () {
         var masters = getMaster({year: config.year, sport: config.sport}).masters;
         var startMaster = _.last(masters);
