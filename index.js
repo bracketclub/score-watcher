@@ -1,7 +1,7 @@
 var Watcher = require('./lib/watcher');
 var path = require('path');
 var config = require('figs');
-var updateMaster = require('../bracket-data-live/lib/save').masterJSON;
+var Updater = require('../bracket-data-live/lib/save');
 var getMaster = require('../bracket-data-live/index');
 var _ = require('lodash-node');
 
@@ -26,13 +26,19 @@ new Watcher({
         var masters = getMaster({year: config.year, sport: config.sport}).masters;
         var startMaster = _.last(masters);
 
+        this.updater = new Updater({
+            year: config.year,
+            sport: config.sport,
+            logger: this.logger
+        });
+
         this.logger.debug('[START MASTER]', startMaster);
         this.updater.currentMaster = startMaster;
 
         this.scores.start();
     },
     drain: function (currentMaster, cb) {
-        updateMaster({year: config.year, sport: config.sport}, currentMaster, function (err) {
+        this.updater.master(currentMaster, function (err) {
             if (err) {
                 this.logger.error('[JSON SAVE ERROR]', err);
             } else {
