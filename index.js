@@ -26,7 +26,7 @@ new Watcher({
         var masters = getMaster({year: config.year, sport: config.sport}).masters;
         var startMaster = _.last(masters);
 
-        this.updater = new Updater({
+        this.bracketDataUpdater = new Updater({
             year: config.year,
             sport: config.sport,
             logger: this.logger
@@ -38,7 +38,7 @@ new Watcher({
         this.scores.start();
     },
     drain: function (currentMaster, cb) {
-        this.updater.master(currentMaster, function (err) {
+        this.bracketDataUpdater.master(currentMaster, function (err) {
             if (err) {
                 this.logger.error('[JSON SAVE ERROR]', err);
             } else {
