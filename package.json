@@ -11,22 +11,23 @@
     "url": "https://github.com/tweetyourbracket/score-watcher/issues"
   },
   "dependencies": {
-    "async": "~0.2.10",
-    "bracket-data": "~2.0.3",
-    "bracket-updater": "~2.0.0",
-    "bucker": "~1.0.5",
+    "async": "^0.9.0",
+    "bracket-data": "^2.1.0",
+    "bracket-updater": "^2.0.3",
+    "bucker": "^1.0.11",
     "figs": "^0.1.4",
-    "lodash-node": "~2.4.1",
-    "scores": "~1.0.2"
+    "lodash": "^3.3.1",
+    "scores": "^1.0.7"
   },
   "devDependencies": {
-    "mocha": "~1.17.1",
-    "precommit-hook": "~0.3.10"
+    "jshint": "^2.6.0",
+    "mocha": "^2.1.0",
+    "precommit-hook": "^1.0.7"
   },
   "homepage": "http://github.com/tweetyourbracket/score-watcher",
   "keywords": [
-    "ncaa",
     "bracket",
+    "ncaa",
     "tweetyourbracket"
   ],
   "license": "MIT",
@@ -38,7 +39,6 @@
   },
   "scripts": {
     "start": "node index",
-    "reset": "node index --reset",
     "test": "./node_modules/.bin/mocha -c -u bdd -R spec --timeout 2000 test/test.js"
   }
 }

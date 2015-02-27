@@ -6,7 +6,7 @@ var sport = 'ncaa-mens-basketball';
 var data = new BracketData({year: year, sport: sport, props: ['order', 'constants']});
 var order = data.order;
 var constants = data.constants;
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 
 describe('Score watcher', function () {

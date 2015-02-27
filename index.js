@@ -3,7 +3,7 @@ var path = require('path');
 var config = require('figs');
 var Updater = require('../bracket-data-live/lib/save');
 var getMaster = require('../bracket-data-live/index');
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 
 new Watcher({
