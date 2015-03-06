@@ -7,9 +7,33 @@ Score watcher for tweetyourbracket.com.
 
 ## Usage
 
-1. Create `config.js` file in root with a `sport` and a `year` (or create the file anywhere that [`figs`](https://www.npmjs.org/package/figs) will support).
-2. `npm install`
-3. `npm start`
+``js
+var ScoreWatcher = require('score-watcher');
+
+new ScoreWatcher({
+    // Required
+    sport: 'ncaa-mens-basketball',
+    year: '2015',
+    // An optional bracket to initialize the updater with
+    // Will default to an empty bracket for the sport/year
+    master: '',
+    // Optional log file
+    logfile: '/path/to/logs/app.log',
+    // The callbacks
+    onSave: function (master, cb) {
+        // Will be called with each master as a string
+        // `cb` is optional but should be used to ensure
+        // that each bracket is saved before moving to
+        // the next one
+    },
+    scores: {
+        // Config for scores module
+        interval: 1,
+        url: 'http://url.com'
+    }
+}).start();
+
+```
 
 ## What is it doing?
 
