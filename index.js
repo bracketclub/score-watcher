@@ -60,11 +60,11 @@ function Watcher (options) {
 
 
     // Helpful for debugging how the watcher was started
-    this.logger.debug('[INIT SCORE-WATCHER]', {
+    this.logger.debug('[INIT SCORE-WATCHER]', JSON.stringify({
         master: this.updater.currentMaster,
         year: options.year,
         sport: options.sport
-    });
+    }));
 
 
     // Queue ensures that even if the score watcher emits
@@ -80,7 +80,7 @@ util.inherits(Watcher, EventEmitter);
 
 
 Watcher.prototype.queueWorker = function (game, cb) {
-    this.logger.debug('[GAME QUEUED]', game);
+    this.logger.debug('[GAME QUEUED]', JSON.stringify(game));
 
     var updated = this.updater.update(game);
     if (updated instanceof Error) {
@@ -129,7 +129,7 @@ Watcher.prototype.onUpdateGame = function (game) {
 
         // Dont allow games that are already in the queue to be added again
         if (duplicateTask) {
-            this.logger.debug('[DUPLICATE UPDATE]', result);
+            this.logger.debug('[DUPLICATE UPDATE]', JSON.stringify(result));
         } else {
             this.queue.push(result);
         }
