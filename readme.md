@@ -37,7 +37,7 @@ new ScoreWatcher({
 
 ## What is it doing?
 
-It is setting up an async.queue and creating a watcher/emitter with [`scores`](http://github.com/tweetyourbracket/scores). Then every time the queue drains, it pushes the latest master to an array in the [`bracket-data-live`](http://github.com/tweetyourbracket/bracket-data-live) repo located as a sibling dir.
+It is setting up an async.queue and creating a watcher/emitter with [`scores`](http://github.com/tweetyourbracket/scores). Then every time the queue drains, it calls `onSave` with the latest master (and an optional callback to notify the watcher when it has been added).
 
 ## Is it on npm?
 
