@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "bracket-data": "^2.1.0",
-    "bracket-updater": "^2.0.3",
+    "bracket-data": "^2.2.6",
+    "bracket-updater": "^2.0.4",
     "bucker": "^1.0.11",
-    "lodash": "^3.3.1",
+    "lodash": "^3.5.0",
     "scores": "^1.0.7"
   },
   "devDependencies": {
-    "jshint": "^2.6.0",
-    "mocha": "^2.1.0",
+    "jshint": "^2.6.3",
+    "mocha": "^2.2.1",
     "precommit-hook": "^1.0.7"
   },
   "homepage": "http://github.com/tweetyourbracket/score-watcher",
