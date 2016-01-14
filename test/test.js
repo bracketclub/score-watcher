@@ -1,9 +1,9 @@
 var Watcher = require('../index');
-var BracketData = require('bracket-data');
+var bracketData = require('bracket-data');
 var assert = require('assert');
 var year = '2013';
 var sport = 'ncaa-mens-basketball';
-var data = new BracketData({year: year, sport: sport, props: ['order', 'constants']});
+var data = bracketData({year: year, sport: sport});
 var order = data.order;
 var constants = data.constants;
 var _ = require('lodash');

@@ -3,7 +3,7 @@ var bucker = require('bucker');
 var _ = require('lodash');
 var Scores = require('scores');
 var BracketUpdater = require('bracket-updater');
-var BracketData = require('bracket-data');
+var bracketData = require('bracket-data');
 var async = require('async');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
@@ -46,9 +46,7 @@ function Watcher (options) {
 
 
     // An empty bracket to start from by default
-    var empty = new BracketData(_.extend({
-        props: ['constants']
-    }, {year: options.year, sport: options.sport})).constants.EMPTY;
+    var empty = bracketData({year: options.year, sport: options.sport}).constants.EMPTY;
 
 
     // Create our bracket update with the initial master to be updated
