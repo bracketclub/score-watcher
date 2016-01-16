@@ -16,7 +16,7 @@ function Watcher (options) {
 
     this.options = _.defaults(options, {
         logger: null,
-        sport: 'ncaa-mens-basketball',
+        sport: 'ncaam',
         year: new Date().getFullYear(),
         master: '',
         logfile: path.resolve(__dirname, 'logs', 'app.log'),

@@ -12,7 +12,7 @@ var ScoreWatcher = require('score-watcher');
 
 new ScoreWatcher({
     // Required
-    sport: 'ncaa-mens-basketball',
+    sport: 'ncaam',
     year: '2015',
     // An optional bracket to initialize the updater with
     // Will default to an empty bracket for the sport/year
