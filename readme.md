@@ -7,7 +7,7 @@ Score watcher for tweetyourbracket.com.
 
 ## Usage
 
-``js
+```js
 var ScoreWatcher = require('score-watcher');
 
 new ScoreWatcher({
