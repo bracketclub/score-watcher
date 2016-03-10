@@ -28,12 +28,12 @@ class Watcher {
       throw new Error('Needs a sport and a year');
     }
 
+    // The logger will be passed to the score watcher to log everything there.
+    this.logger = this.options.logger || bucker.createNullLogger();
+
     // Create the score watcher
     this.scores = new Scores(_.extend({logger: this.logger}, this.options.scores));
     this.scores.on('event', (event) => this.onEvent(event));
-
-    // The logger will be passed to the score watcher to log everything there.
-    this.logger = this.options.logger || bucker.createNullLogger();
 
     // Create our bracket update with the initial master to be updated
     this.updater = new BracketUpdater({
