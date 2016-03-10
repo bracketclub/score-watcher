@@ -1,7 +1,7 @@
 {
   "name": "@lukekarrys/score-watcher",
   "description": "Score watcher for tweetyourbracket.com",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": {
     "name": "Luke Karrys",
     "email": "luke@lukekarrys.com",
