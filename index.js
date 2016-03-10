@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const bucker = require('bucker');
 const _ = require('lodash');
 const Scores = require('scores');
@@ -15,7 +14,6 @@ class Watcher {
       sport: 'ncaam',
       year: new Date().getFullYear(),
       master: '',
-      logfile: path.resolve(__dirname, 'logs', 'app.log'),
       onSave() {},
       onDrain() {},
       scores: {}
@@ -34,17 +32,8 @@ class Watcher {
     this.scores = new Scores(_.extend({logger: this.logger}, this.options.scores));
     this.scores.on('event', (event) => this.onEvent(event));
 
-    // The logger will be passed to the score watcher to
-    // log everything there.
-    this.logger = this.options.logger || bucker.createLogger({
-      console: {color: true},
-      app: {
-        filename: this.options.logfile,
-        format: ':level :time :data',
-        timestamp: 'HH:mm:ss',
-        accessFormat: ':time :level :method :status :url'
-      }
-    });
+    // The logger will be passed to the score watcher to log everything there.
+    this.logger = this.options.logger || bucker.createNullLogger();
 
     // Create our bracket update with the initial master to be updated
     this.updater = new BracketUpdater({

@@ -11,7 +11,6 @@ const data = bracketData({year, sport});
 const order = data.order;
 const constants = data.constants;
 const _ = require('lodash');
-const logger = require('bucker').createNullLogger();
 
 const scores = {
   url: 'http://mock-url-for-tests.com'
@@ -22,7 +21,6 @@ test('It should update the first round all at once', (t) => {
 
   const watcher = new Watcher({
     scores,
-    logger,
     year,
     sport,
     onSave(master) {
@@ -68,7 +66,6 @@ test('It should update the first round separately if not queued and async', (t) 
 
   const watcher = new Watcher({
     scores,
-    logger,
     year,
     sport,
     onSave(master, cb) {
@@ -106,7 +103,6 @@ test('It should update a few games with gaps', (t) => {
 
   const watcher = new Watcher({
     scores,
-    logger,
     year,
     sport,
     onSave(master) {
@@ -154,7 +150,6 @@ test('It should only update once if the same game is added to the queue multiple
   const masters = [];
   const watcher = new Watcher({
     scores,
-    logger,
     year,
     sport,
     onSave(master) {
