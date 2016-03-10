@@ -11,17 +11,22 @@
     "url": "https://github.com/tweetyourbracket/score-watcher/issues"
   },
   "dependencies": {
-    "async": "^0.9.0",
-    "bracket-data": "^4.0.0",
-    "bracket-updater": "^3.0.0",
-    "bucker": "^1.0.11",
-    "lodash": "^3.6.0",
-    "scores": "^2.0.0"
+    "async": "^1.5.2",
+    "bracket-data": "^4.0.9",
+    "bracket-updater": "^3.1.0",
+    "bucker": "^1.1.1",
+    "lodash": "^4.6.1",
+    "scores": "^3.0.0"
   },
   "devDependencies": {
-    "jshint": "^2.6.3",
-    "mocha": "^2.2.1",
-    "precommit-hook": "^2.0.1"
+    "@lukekarrys/eslint-config": "^2.0.15",
+    "babel-eslint": "^6.0.0-beta.5",
+    "eslint": "^2.3.0",
+    "eslint-plugin-classes": "^0.1.1",
+    "eslint-plugin-react": "^4.2.1",
+    "git-validate": "^2.1.4",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1"
   },
   "homepage": "http://github.com/tweetyourbracket/score-watcher",
   "keywords": [
@@ -33,6 +38,7 @@
   "main": "index.js",
   "pre-commit": [
     "lint",
+    "validate",
     "test"
   ],
   "repository": {
@@ -40,8 +46,9 @@
     "url": "http://github.com/tweetyourbracket/score-watcher.git"
   },
   "scripts": {
-    "lint": "jshint .",
+    "lint": "eslint .",
     "start": "node index",
-    "test": "./node_modules/.bin/mocha -c -u bdd -R spec --timeout 2000 test/test.js"
+    "test": "tape test/test.js | tap-spec",
+    "validate": "npm ls"
   }
 }

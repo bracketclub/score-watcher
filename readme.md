@@ -8,7 +8,7 @@ Score watcher for tweetyourbracket.com.
 ## Usage
 
 ```js
-var ScoreWatcher = require('score-watcher');
+const ScoreWatcher = require('score-watcher');
 
 new ScoreWatcher({
     // Required
@@ -28,7 +28,7 @@ new ScoreWatcher({
     },
     scores: {
         // Config for scores module
-        interval: 1,
+        interval: '1m',
         url: 'http://url.com'
     }
 }).start();
