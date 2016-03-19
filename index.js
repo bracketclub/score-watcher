@@ -60,7 +60,11 @@ class Watcher {
     const updated = this.updater.update(event);
 
     if (updated instanceof Error) {
-      this.logger.error('[UPDATE FAILED]', updated);
+      this.logger.error('[UPDATE FAILED]', JSON.stringify({
+        event,
+        err: updated.message,
+        master: this.updater.currentMaster
+      }));
       return cb();
     }
 
