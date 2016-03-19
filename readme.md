@@ -18,7 +18,7 @@ new ScoreWatcher({
     // Will default to an empty bracket for the sport/year
     master: '',
     // Optional log file
-    logfile: '/path/to/logs/app.log',
+    logger: null,
     // The callbacks
     onSave: function (master, cb) {
         // Will be called with each master as a string
