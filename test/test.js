@@ -2,15 +2,16 @@
 
 'use strict';
 
-const Watcher = require('../index');
+const _ = require('lodash');
 const test = require('tape');
 const bracketData = require('bracket-data');
+const Watcher = require('../index');
+
 const year = '2013';
 const sport = 'ncaam';
 const data = bracketData({year, sport});
 const order = data.order;
 const constants = data.constants;
-const _ = require('lodash');
 
 const scores = {
   url: 'http://mock-url-for-tests.com'
