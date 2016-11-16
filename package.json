@@ -13,7 +13,7 @@
   "dependencies": {
     "async": "^2.1.2",
     "bracket-data": "^4.4.0",
-    "bracket-updater": "^3.2.1",
+    "bracket-updater": "^3.3.0",
     "bucker": "^1.1.1",
     "lodash": "^4.17.1",
     "scores": "^3.3.0"
