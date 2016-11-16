@@ -93,6 +93,7 @@ class Watcher {
     }, {})
 
     const result = {
+      playedCompetitions: event.playedCompetitions,
       fromRegion: event.region,
       winner: transformTeam(event.home.winner ? event.home : event.away),
       loser: transformTeam(event.home.winner ? event.away : event.home)
