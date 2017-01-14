@@ -17,6 +17,10 @@ class Watcher {
       scores: {}
     })
 
+    if (!options.sport || !options.year) {
+      throw new Error(`Needs sport and year. Got ${options.sport} ${options.year}`)
+    }
+
     const sport = this.options.sport
     const year = this.options.year
     const empty = bracketData({year, sport}).constants.EMPTY
