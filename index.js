@@ -11,8 +11,6 @@ class Watcher {
   constructor (options) {
     this.options = _.defaults(options || {}, {
       logger: null,
-      sport: 'ncaam',
-      year: new Date().getFullYear(),
       master: '',
       onSave () {},
       onDrain () {},
