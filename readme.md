@@ -1,9 +1,9 @@
 score-watcher
 ==============
 
-[![Build Status](https://travis-ci.org/tweetyourbracket/score-watcher.png?branch=master)](https://travis-ci.org/tweetyourbracket/score-watcher)
+[![Build Status](https://travis-ci.org/bracketclub/score-watcher.png?branch=master)](https://travis-ci.org/bracketclub/score-watcher)
 
-Score watcher for tweetyourbracket.com.
+Score watcher for [bracket.club](https://bracket.club).
 
 ## Usage
 
@@ -37,7 +37,7 @@ new ScoreWatcher({
 
 ## What is it doing?
 
-It is setting up an async.queue and creating a watcher/emitter with [`scores`](http://github.com/tweetyourbracket/scores). Then every time the queue drains, it calls `onSave` with the latest master (and an optional callback to notify the watcher when it has been added).
+It is setting up an async.queue and creating a watcher/emitter with [`scores`](http://github.com/bracketclub/scores). Then every time the queue drains, it calls `onSave` with the latest master (and an optional callback to notify the watcher when it has been added).
 
 ## Is it on npm?
 
