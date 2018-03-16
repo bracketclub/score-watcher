@@ -45,7 +45,7 @@ class Watcher {
     })
 
     // Helpful for debugging how the watcher was started
-    this.logger.debug('[INIT SCOREWATCHER]', JSON.stringify({master, year, sport}))
+    this.logger.info('[INIT SCOREWATCHER]', JSON.stringify({master, year, sport}))
 
     // Queue ensures that even if the score watcher emits
     // more than one event, we can still update the master bracket
@@ -57,7 +57,7 @@ class Watcher {
   }
 
   queueWorker (event, cb) {
-    this.logger.debug('[EVENT QUEUED]', JSON.stringify(event))
+    this.logger.info('[EVENT QUEUED]', JSON.stringify(event))
 
     const updated = this.updater.update(event)
 
@@ -70,7 +70,7 @@ class Watcher {
       return process.nextTick(cb)
     }
 
-    this.logger.debug('[UPDATED]', updated)
+    this.logger.info('[UPDATED]', updated)
 
     // If we have a callback, then use that async
     if (this.options.onSave.length === 2) {
@@ -108,7 +108,7 @@ class Watcher {
 
       // Dont allow games that are already in the queue to be added again
       if (duplicateTask) {
-        this.logger.debug('[DUPLICATE UPDATE]', JSON.stringify(result))
+        this.logger.error('[DUPLICATE UPDATE]', JSON.stringify(result))
       } else {
         this.queue.push(result)
       }
