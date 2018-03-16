@@ -1,6 +1,7 @@
 score-watcher
 ==============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bracketclub/score-watcher.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/bracketclub/score-watcher.png?branch=master)](https://travis-ci.org/bracketclub/score-watcher)
 
 Score watcher for [bracket.club](https://bracket.club).
