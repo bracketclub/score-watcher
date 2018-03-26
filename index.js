@@ -108,7 +108,7 @@ class Watcher {
 
       // Dont allow games that are already in the queue to be added again
       if (duplicateTask) {
-        this.logger.error('[DUPLICATE UPDATE]', JSON.stringify(result))
+        this.logger.warn('[DUPLICATE UPDATE]', JSON.stringify(result))
       } else {
         this.queue.push(result)
       }
